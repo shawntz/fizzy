@@ -32,17 +32,9 @@ body {
 
 :where(#footer) {
   max-inline-size: 100vw;
-  view-transition-name: footer;
 
   > nav {
     padding-inline: var(--inline-space);
-    view-transition-name: footer-nav;
-  }
-
-  &:has(.new-book-btn) {
-    inset-block-end: 0;
-    pointer-events: none;
-    position: sticky;
   }
 }
 
@@ -67,19 +59,7 @@ body {
   }
 }
 
-:where(#toolbar) {
-  display: flex;
-  inset: 0 0 auto;
-  justify-content: center;
-  min-width: 0;
-  overflow: hidden;
-  padding-inline: var(--inline-space);
-  position: sticky;
-  view-transition-name: toolbar;
-  z-index: 1;
-}
-
-:is(#header, #footer, #toolbar) {
+:is(#header, #footer) {
   @media print {
     display: none;
   }

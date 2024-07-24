@@ -1,9 +1,33 @@
-<%= form_with model: User.new, url: session_path do |f| %>
-  <%= f.label :email_address %>
-  <%= f.email_field :email_address %>
+<% content_for(:title) { "Sign in" } %>
+<% turbo_page_requires_reload %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<div class="panel shadow center margin-block-double <%= "shake" if flash[:alert] %>" style="--panel-size: 40ch;">
+  <%= image_tag "splat-1.svg", class: "product__logo center colorize--black", size: 130 %>
+  <h1 class="margin-none-block-start margin-block-end-double">Splat</h1>
 
-  <%= f.submit "Sign in" %>
+  <%= form_with model: User.new, url: session_path, class: "flex flex-column gap" do |form| %>
+    <div class="flex align-center gap">
+      <%= translation_button(:email_address) %>
+      <label class="flex align-center gap input input--actor txt-large">
+        <%= form.email_field :email_address, required: true, class: "input full-width", autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+        <%= image_tag "email.svg", aria: { hidden: "true" }, size: 30, class: "colorize--black" %>
+      </label>
+    </div>
+
+    <div class="flex align-center gap">
+      <%= translation_button(:password) %>
+      <label class="flex align-center gap input input--actor txt-large">
+        <%= form.password_field :password, required: true, class: "input full-width", autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+        <%= image_tag "password.svg", aria: { hidden: "true" }, size: 30, class: "colorize--black" %>
+      </label>
+    </div>
+    <button type="submit" id="log_in" class="btn btn--reversed center">
+      <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Sign in</span>
+    </button>
+  <% end %>
+</div>
+
+<% content_for(:footer) do %>
+  <div class="txt-align-center center margin-block-double txt-subtle">Splat&trade; version 0</div>
 <% end %>

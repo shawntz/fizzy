@@ -1,0 +1,12 @@
+/* Animation classes */
+.shake {
+  animation: shake 400ms both;
+}
+
+/* Keyframes */
+@keyframes shake {
+  0%  { transform: translateX(-2rem); }
+  25% { transform: translateX(2rem); }
+  50% { transform: translateX(-1rem); }
+  75% { transform: translateX(1rem); }
+}
